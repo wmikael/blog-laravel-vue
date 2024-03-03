@@ -45,7 +45,7 @@ const carregarMaterias = async () => {
   totalDePaginas.value = response.data.last_page
 }
 
-const handlePaginaChange = async (page) => {
+const handlePaginaChange = async (page: number) => {
   paginaAtual.value = page
   await carregarMaterias()
 }
