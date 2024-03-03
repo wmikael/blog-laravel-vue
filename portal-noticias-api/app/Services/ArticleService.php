@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Services;
+
 use App\Models\Article;
 use App\DTO\Article\ArticleIndexDTO;
 use App\DTO\Article\ArticleStoreDTO;
 use App\DTO\Article\ArticleUpdateDTO;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use App\Http\Resources\ArticleIndexResource;
 
 
 class ArticleService
 {
     public function index(int $perPage = 10): LengthAwarePaginator
     {
-        $articles = Article::orderBy("published_at", "desc")->paginate($perPage);
+        $articles = Article::select('id', 'title', 'description', 'image', 'published_at')->orderBy('published_at', 'desc')->paginate($perPage);
         return $articles;
     }
 
@@ -37,8 +37,10 @@ class ArticleService
         return $article;
     }
 
-    public function update(ArticleUpdateDTO $articleUpdateDTO, Article $article): Article
+    public function update($id, ArticleUpdateDTO $articleUpdateDTO): Article
     {
+        $article = Article::findOrFail($id);
+
         $article->update([
             'title' => $articleUpdateDTO->title,
             'description' => $articleUpdateDTO->description,
@@ -50,8 +52,9 @@ class ArticleService
         return $article;
     }
 
-    public function destroy(Article $article): Article
+    public function destroy(int $id): Article
     {
+        $article = Article::findOrFail($id);
         $article->delete();
         return $article;
     }
