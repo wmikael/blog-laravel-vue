@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\DTO\Article\ArticleStoreDTO;
 use App\DTO\Article\ArticleUpdateDTO;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ArticleIndexResource;
 
 use App\Services\ArticleService;
 use Illuminate\Http\Request;
@@ -25,9 +24,7 @@ class ArticleController extends Controller
             'per_page' => 'integer'
         ])['per_page'] ?? 10;
 
-        $articles = $this->articleService->index($perPage);
-
-        return ArticleIndexResource::collection($articles);
+        return $this->articleService->index($perPage);
     }
 
 
@@ -54,24 +51,24 @@ class ArticleController extends Controller
         return $article;
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateArticleRequest $request, $id)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'content' => 'required|string',
-            'image' => 'nullable|string|max:255',
-            'published_at' => 'nullable|date',
-        ]);
+        // Obtenha os dados validados do request
+        $validatedData = $request->validated();
+
+        // Crie um DTO com os dados validados
         $articleUpdateDTO = new ArticleUpdateDTO($validatedData);
+
+        // Chame o serviço para atualizar o artigo
         $article = $this->articleService->update($id, $articleUpdateDTO);
 
+        // Retorne a resposta com o artigo atualizado
         return response()->json($article);
     }
 
     public function destroy($id)
     {
-        $article = $this->articleService->destroy($id);
+        $this->articleService->destroy($id);
 
         return response()->json(null, 204);
     }
