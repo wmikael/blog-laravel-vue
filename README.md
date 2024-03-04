@@ -30,9 +30,6 @@ docker compose up -d
 - Desenvolvida em Laravel 10;
 - CRUD - Article (matéria);
 
-Ao rodar o projeto acessível em:
-[http://localhost:9191](http://localhost:9191)
-
 ### Métodos:
 
 #### index: GET <http://localhost:9191/api/articles>
