@@ -29,14 +29,36 @@ Acesse a pasta da api:
 cd portal-noticias-api
 ```
 
-Execute o setup-api.sh:
+Execute o docker compose:
 
 ```
-chmod +x setup-api.sh
+docker-compose up -d
 ```
+
+Execute o bash da aplicação de dentro do container:
+
 ```
-./setup.sh
+docker-compose exec app bash
 ```
+
+Dentro do bash da aplicação:
+
+```
+composer install
+```
+
+```
+php artisan key:generate
+```
+
+```
+php artisan migrate
+```
+
+```
+php artisan db:seed --class=ArticleSeeder
+```
+
 
 ### Executar o FRONT:
 
