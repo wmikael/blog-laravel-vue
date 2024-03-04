@@ -96,3 +96,10 @@ php artisan make:model Article -m
 
 Tive problemas ao tentar criar um docker-compose.yml na pasta externa do projeto de forma a executar somente um docker compose up -d e subir o projeto todo. Consegui rodar local, mas ao tentar clonar o repositorio novamente e rodar, não funcionou. Aparentemente é algum erro nas pastas de configuração do dockerfile, nginx e docker-compose.
 
+### Proximas atualizações:
+
+- Ajustar docker do front;
+- Acrescentar views que usem outros metodos da API como update, store e delete;
+- Configurar autenticação para os métodos update, store e delete;
+
+
