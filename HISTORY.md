@@ -26,36 +26,6 @@ No terminal do wsl executei o comando:
 chmod -R 775 /home/wmikael/workspaces/teste-maximize
 ```
 
-## Executar API
-
-Após isso e com os arquivos docker configurados, abri o projeto no vscode configurado para wsl e executei os seguintes comandos no terminal:
-
-1. Executar o docker compose sem bloquear o terminal:
-
-```
-docker compose up -d
-```
-
-2. Acessar o bash do container da aplicação laravel
-
-```
- docker compose exec app bash
-```
-
-3. Instalar as dependencias do projeto no container
-
-```
-composer install
-```
-
-4. Gerar a key do projeto laravel
-
-```
-php artisan key:generate
-```
-
-Em seguida basta acessar a url: <http://localhost:9191>
-
 ## Desenvolvimento API
 
 - Deixei todas as variaveis em ingles seguindo as boas praticas de desenvolvimento em laravel.
@@ -84,7 +54,7 @@ php artisan make:model Article -m
 
 - Resetei o css.
 
-- Criei os componenents footer e header.
+- Criei os componentes footer e header.
 
 - Configurei as rotas e criei as views AppInicio e AppMateria, onde a AppInicio lista os cards de materias. Quando o usuario clica em algum card de materia, ele é redirecionado para AppMateria com os dados da materia desejada.
 
@@ -94,12 +64,13 @@ php artisan make:model Article -m
 
 ### Problemas no desenvolvimento
 
-Tive problemas ao tentar criar um docker-compose.yml na pasta externa do projeto de forma a executar somente um docker compose up -d e subir o projeto todo. Consegui rodar local, mas ao tentar clonar o repositorio novamente e rodar, não funcionou. Aparentemente é algum erro nas pastas de configuração do dockerfile, nginx e docker-compose.
+Tive problemas ao tentar criar um docker-compose.yml na pasta externa do projeto de forma a executar somente um docker compose up -d e subir o projeto todo. Consegui rodar dessa forma no meu pc, mas ao tentar clonar o repositorio novamente e rodar, não funcionou. Aparentemente é algum erro nas pastas de configuração do dockerfile, nginx e docker-compose.
 
 ### Proximas atualizações:
 
 - Ajustar docker do front;
 - Acrescentar views que usem outros metodos da API como update, store e delete;
 - Configurar autenticação para os métodos update, store e delete;
+- Melhorar design do front;
 
 
