@@ -26,7 +26,7 @@ cd blog-laravel-vue
 Acesse a pasta da api:
 
 ```sh
-cd portal-noticas-api
+cd portal-noticias-api
 ```
 
 Execute o setup-api.sh:
