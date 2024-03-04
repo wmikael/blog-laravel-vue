@@ -20,7 +20,7 @@ cd blog-laravel-vue
 Suba os containers do projeto:
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Acesse o projeto:
