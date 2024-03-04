@@ -6,7 +6,13 @@ Blog desenvolvido com laravel 10 e vue 3.
 ## Passo a passo
 
 
-Certifique-se de ter o docker engine instalado e as permissões de root/admin.
+Certifique-se de ter instalado:
+
+- docker engine;
+- docker compose;
+- node; 
+
+Também certifique-se de ter as permissões de root ou admin.
 
 Clone Repositório:
 
@@ -32,13 +38,13 @@ cd portal-noticias-api
 Execute o docker compose:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 Execute o bash da aplicação de dentro do container:
 
 ```
-docker-compose exec app bash
+docker compose exec app bash
 ```
 
 Dentro do bash da aplicação:
@@ -58,6 +64,14 @@ php artisan migrate
 ```
 php artisan db:seed --class=ArticleSeeder
 ```
+
+Depois disso, nas proximas execuções pode ser apenas: 
+
+```
+docker compose -up -d
+```
+
+OBS: lembre de executar esse compose dentro da pasta /portal-noticias-api
 
 
 ### Executar o FRONT:
