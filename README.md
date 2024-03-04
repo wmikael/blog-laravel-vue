@@ -5,7 +5,8 @@ Blog desenvolvido com laravel 10 e vue 3.
 
 ## Passo a passo
 
-Certifique-se de ter o docker engine instalado.
+
+Certifique-se de ter o docker engine instalado e as permissões de root/admin.
 
 Clone Repositório:
 
@@ -19,11 +20,55 @@ Acesse o diretorio do projeto:
 cd blog-laravel-vue
 ```
 
-Suba os containers do projeto:
+
+### Executar a API:
+
+Acesse a pasta da api:
 
 ```sh
-docker compose up -d
+cd portal-noticas-api
 ```
+
+Execute o setup-api.sh:
+
+```
+chmod +x setup-api.sh
+```
+```
+./setup.sh
+```
+
+### Executar o FRONT:
+
+Acessar a pasta do front:
+
+OBS: Caso ainda esteja no mesmo terminal e na pasta da API:
+```
+cd ../portal-noticias-front
+```
+Em seguida instale as depencias com:
+
+```
+npm i
+```
+Após instalar as dependencias:
+
+```
+npm run dev
+```
+
+## Front
+
+- Desenvolvido em Vue 3 composition api;
+- Utiliza a biblioteca de componentes Naive.ui;
+
+[http://localhost:8080](http://localhost:8080)
+
+<img src="assets/Usabilidade.gif" width="1280" />
+
+<img src="assets/Responsividade.gif" width="1280" />
+
+O front basicamente consome apenas o método index na pagina inicial, onde lista cards de materias com informacoes resumidas de forma paginada e ao usuario clicar em um card de materia, é redirecionado pra pagina da materia onde o método show é consumido, mostrando todas as informaçoes da materia.
 
 ## API
 
@@ -84,17 +129,6 @@ Ao passar um id apaga a materia.
 
 <hr/>
 
-## Front
 
-- Desenvolvido em Vue 3 composition api;
-- Utiliza a biblioteca de componentes Naive.ui;
-
-[http://localhost:8080](http://localhost:8080)
-
-<img src="assets/Usabilidade.gif" width="1280" />
-
-<img src="assets/Responsividade.gif" width="1280" />
-
-O front basicamente consome apenas o método index na pagina inicial, onde lista cards de materias com informacoes resumidas de forma paginada e ao usuario clicar em um card de materia, é redirecionado pra pagina da materia onde o método show é consumido, mostrando todas as informaçoes da materia.
 
 
