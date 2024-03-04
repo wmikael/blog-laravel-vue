@@ -31,7 +31,7 @@ docker compose up -d
 - CRUD - Article (matéria);
 
 Ao rodar o projeto acessível em:
-[http://localhost:8989](http://localhost:8989)
+[http://localhost:9191](http://localhost:9191)
 
 ### Métodos:
 
