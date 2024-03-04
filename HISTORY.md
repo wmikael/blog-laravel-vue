@@ -6,15 +6,15 @@ Optei por Laravel tendo em vista que ele fornece uma gama mais ampla de recursos
 
 ## Escolha do ambiente de desenvolvimento
 
-Como nos requisitos do projeto havia dockerização, optei por fazer o ambiente de desenvolvimento através de um docker compose composto pelo laravel, pelo nginx de servidor, pelo banco de dados mysql (posteriormente vou trocar para postgresql), e redis.
+Como nos requisitos do projeto havia dockerização, optei por fazer o ambiente de desenvolvimento através de um docker compose composto pelo laravel, nginx, mysql e redis.
 
 Usei como base o setup docker laravel do Carlos Ferreira:
 
 <https://github.com/especializati/setup-docker-laravel>
 
-No back fiz o REST API
+- BACK: API REST;
 
-Para o front decidi fazer uma aplicação separada em vue js 3 composition api.
+- FRONT: Vue 3 - composition api;
 
 ## Ajuste no WSL2 e execução da aplicação
 
@@ -58,41 +58,41 @@ Em seguida basta acessar a url: <http://localhost:9191>
 
 ## Desenvolvimento API
 
-Deixei todas as variaveis em ingles seguindo as boas praticas de desenvolvimento em laravel.
+- Deixei todas as variaveis em ingles seguindo as boas praticas de desenvolvimento em laravel.
 
-Comecei a criação da API com o model, usei o artisan pra criar o modelo com a migration com o comando:
+- Comecei a criação da API com o model, usei o artisan pra criar o modelo com a migration com o comando:
 
 ```
 php artisan make:model Article -m
 ```
 
-Implementei o modelo e o migration com base nos requisitos do sistema.
+- Implementei o modelo e o migration com base nos requisitos do sistema.
 
-Implementei as rotas em routes/api.php
+- Implementei as rotas em routes/api.php
 
-Então fui pra implementação do controller. Decidi fazer o controller e os services separados.
+- Então fui pra implementação do controller. Decidi fazer o controller e os services separados.
 
-Implementei o CRUD de Article utilizando o ORM Eloquent.
+- Implementei o CRUD de Article utilizando o ORM Eloquent.
 
-Testei os endpoints no Postman e então fui pro desenvolvimento do front
+- Testei os endpoints no Postman e então fui pro desenvolvimento do front
 
 ### Desenvolvimento do Front
 
-Criei o projeto vue 3 com vite e apaguei arquivos desnecessarios.
+- Criei o projeto vue 3 com vite e apaguei arquivos desnecessarios.
 
-Em seguida exportei a logo do figma em png e importei no projeto.
+- Em seguida exportei a logo do figma em png e importei no projeto.
 
-Resetei o css.
+- Resetei o css.
 
-Criei os componenents footer e header.
+- Criei os componenents footer e header.
 
-Configurei as rotas e criei as views AppInicio e AppMateria, onde a AppInicio lista os cards de materias. Quando o usuario clica em algum card de materia, ele é redirecionado para AppMateria com os dados da materia desejada.
+- Configurei as rotas e criei as views AppInicio e AppMateria, onde a AppInicio lista os cards de materias. Quando o usuario clica em algum card de materia, ele é redirecionado para AppMateria com os dados da materia desejada.
 
-Em AppInicio a pagina é carregada com uma lista paginada de materias.
+- Em AppInicio a pagina é carregada com uma lista paginada de materias.
 
-Em AppMateria é feito uma requisição com base no id obtido em AppInicio e entao exibe todas as informacoes da materia escolhida.
+- Em AppMateria é feito uma requisição com base no id obtido em AppInicio e entao exibe todas as informacoes da materia escolhida.
 
 ### Problemas no desenvolvimento
 
-Tive problemas na dockerização do projeto. Tentei criar um docker-compose.yml na pasta externa do projeto de forma a executar somente um docker compose up -d e subir o projeto todo, com o back sendo acessado em localhost:9191/articles 
+Tive problemas ao tentar criar um docker-compose.yml na pasta externa do projeto de forma a executar somente um docker compose up -d e subir o projeto todo. Consegui rodar local, mas ao tentar clonar o repositorio novamente e rodar, não funcionou. Aparentemente é algum erro nas pastas de configuração do dockerfile, nginx e docker-compose.
 
